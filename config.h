@@ -18,8 +18,8 @@
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
-    X("Ram: ", "free -h --giga | awk '/^Mem/ {print $3\"/\"$2}'", 10, 0)  \
-    X("Volume: ", "amixer get Master | awk -F'[][]' '/%/ {print $2; exit}'", 10, 0)  \
-    X("", "LC_TIME=pt_BR.UTF-8 date '+%d de %B de %Y (%A) %H:%M'", 1, 0)  \
+    X("Ram: ",     "free -h --giga | awk '/^Mem/ {print $3\"/\"$2}'",       10, 1)  \
+    X("Volume: ",  "status-volume",                                         0,  2)  \
+    X("",          "LC_TIME=pt_BR.UTF-8 date '+%d de %B de %Y (%A) %H:%M'", 5,  3)  \
 
 #endif  // CONFIG_H

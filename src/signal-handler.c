@@ -119,6 +119,8 @@ int signal_handler_process(signal_handler *const handler, timer *const timer) {
             break;
         }
     }
+    printf("Received signal: %d, button: %d\n", info.ssi_signo, info.ssi_int);
+    fflush(stdout);
 
     return 0;
 }
