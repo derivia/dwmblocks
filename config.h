@@ -18,9 +18,10 @@
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)             \
-    X("Ram: ",     "free -h --giga | awk '/^Mem/ {print $3\"/\"$2}'",             5,  1)  \
-    X("Volume: ",  "status-volume",                                               0,  2)  \
-    X("",          "status-vpn",                                                  2,  0)  \
-    X("",          "LC_TIME=pt_BR.UTF-8 date '+%d de %B de %Y (%A) %H:%M'",       3,  3)  \
+    X("Ram usage: ", "free -h --giga | awk '/^Mem/ {print $3}'",                 5,  1)  \
+    X("Disk left: ",      "df -h /dev/sda6 | awk '/\\/dev\\/sda/ {print $4}'",        5,  0)  \
+    X("Volume: ",    "status-volume",                                            0,  2)  \
+    X("",            "status-vpn",                                               2,  0)  \
+    X("",            "LC_TIME=pt_BR.UTF-8 date '+%d de %B de %Y (%A) %H:%M'",    3,  3)  \
 
 #endif  // CONFIG_H
