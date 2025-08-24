@@ -35,6 +35,10 @@ int x11_set_root_name(x11_connection *const connection, const char *name) {
         return 1;
     }
 
+    if (xcb_connection_has_error(connection)) {
+        return 1; // Connection is already closing, skip error logging
+    }
+
     if (xcb_flush(connection) <= 0) {
         (void)fprintf(stderr, "error: could not flush X output buffer\n");
         return 1;
